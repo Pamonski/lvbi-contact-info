@@ -1,3 +1,15 @@
+<script setup>
+    import { Link } from '@inertiajs/vue3';
+
+    //define props
+    const props = defineProps({
+        contact: {
+            type: Object,
+            required: true
+        }
+    })
+</script>
+
 <template>
     <div class="col-md-4 mb-2">
         <div class="card">
@@ -51,18 +63,6 @@
         </div>
     </div>
 </template>
-
-<script setup>
-    import { Link } from '@inertiajs/vue3';
-
-    //define props
-    const props = defineProps({
-        contact: {
-            type: Object,
-            required: true
-        }
-    })
-</script>
 
 <style scoped>
 </style>

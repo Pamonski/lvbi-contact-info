@@ -1,3 +1,7 @@
+<script setup>
+    import { Link } from '@inertiajs/vue3';
+</script>
+
 <template>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <Link class="navbar-brand"
@@ -21,10 +25,6 @@
     </div>
     </nav>
     </template>
-
-<script setup>
-    import { Link } from '@inertiajs/vue3';
-</script>
 
 <style scoped>
 </style>

@@ -1,11 +1,3 @@
-<template>
-    <div class="container">
-        <ContactList 
-      :contacts="contacts"
-    />
-    </div>
-</template>
-
 <script setup>
     import ContactList from "../../components/contacts/ContactList.vue"
 
@@ -17,6 +9,14 @@
         }
     })
 </script>
+
+<template>
+    <div class="container">
+        <ContactList 
+      :contacts="contacts"
+    />
+    </div>
+</template>
 
 <style scoped>
 </style>

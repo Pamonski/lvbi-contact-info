@@ -1,3 +1,32 @@
+<script setup>
+    import { Link } from '@inertiajs/vue3';
+    import { useForm } from '@inertiajs/vue3';
+    import countries from 'i18n-iso-countries';
+    import enLocale from 'i18n-iso-countries/langs/en.json';
+    countries.registerLocale(enLocale);
+
+    // Data Object
+    const form = useForm({
+        name: '',
+        email: '',
+        phone: '',
+        job_title: '',
+        company: '',
+        country: '',
+        country_code: ''
+    });
+
+    // New Contact function
+    const addNewContact = () => {
+        form.post(route('contacts.store'));
+    };
+
+    // Set country alpha code
+    const setCountryAlphaCode = (country) => {
+        form.country_code = countries.getAlpha2Code(country.target.value, 'en');
+    };
+</script>
+
 <template>
     <div class="container">
         <div class="row my-5">
@@ -124,35 +153,6 @@
         </div>
     </div>
 </template>
-
-<script setup>
-    import { Link } from '@inertiajs/vue3';
-    import { useForm } from '@inertiajs/vue3';
-    import countries from 'i18n-iso-countries';
-    import enLocale from 'i18n-iso-countries/langs/en.json';
-    countries.registerLocale(enLocale);
-
-    // Data Object
-    const form = useForm({
-        name: '',
-        email: '',
-        phone: '',
-        job_title: '',
-        company: '',
-        country: '',
-        country_code: ''
-    });
-
-    // New Contact function
-    const addNewContact = () => {
-        form.post(route('contacts.store'));
-    };
-
-    // Set country alpha code
-    const setCountryAlphaCode = (country) => {
-        form.country_code = countries.getAlpha2Code(country.target.value, 'en');
-    };
-</script>
 
 <style scoped>
 </style>

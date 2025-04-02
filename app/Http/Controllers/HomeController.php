@@ -13,7 +13,7 @@ class HomeController extends Controller
     public function index()
     {
         return Inertia::render('Home/Index')->with([
-            'contacts' => Contact::paginate(10)
+            'contacts' => Contact::paginate(9)
         ]);
     }
 

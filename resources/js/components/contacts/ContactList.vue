@@ -1,3 +1,16 @@
+<script setup>
+    import ContactListItem from './ContactListItem.vue';
+    import NavBar from '../layouts/NavBar.vue';
+    import { Link } from '@inertiajs/vue3';
+    //define props
+    const props = defineProps({
+        contacts: {
+            type: Object,
+            required: true
+        }
+    })
+</script>
+
 <template>
     <div class="card bg-light my-5">
         <div class="card-header bg-white">
@@ -51,19 +64,6 @@
         </div>
     </div>
 </template>
-
-<script setup>
-    import ContactListItem from './ContactListItem.vue';
-    import NavBar from '../layouts/NavBar.vue';
-    import { Link } from '@inertiajs/vue3';
-    //define props
-    const props = defineProps({
-        contacts: {
-            type: Object,
-            required: true
-        }
-    })
-</script>
 
 <style scoped>
 </style>

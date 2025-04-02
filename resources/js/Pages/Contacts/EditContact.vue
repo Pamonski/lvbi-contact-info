@@ -1,3 +1,54 @@
+<script setup>
+    import { Link } from '@inertiajs/vue3';
+    import { useForm } from '@inertiajs/vue3';
+    import countries from 'i18n-iso-countries';
+    import enLocale from 'i18n-iso-countries/langs/en.json';
+import { onMounted } from 'vue';
+    countries.registerLocale(enLocale);
+
+    // Data Object
+    const form = useForm({
+        id: '',
+        name: '',
+        email: '',
+        phone: '',
+        job_title: '',
+        company: '',
+        country: '',
+        country_code: ''
+    });
+
+    // Define props
+    const props = defineProps ({
+        contact: {
+            type: Object,
+            required: true
+        }
+    })
+
+    // New Contact function
+    const updateContact = () => {
+        form.post(route('contacts.update', form.id));
+    };
+
+    // Fill form once component is mounted
+    onMounted(() => {
+        form.id = props.contact.id;
+        form.name = props.contact.name;
+        form.email = props.contact.email;
+        form.phone = props.contact.phone;
+        form.job_title = props.contact.job_title;
+        form.company = props.contact.company;
+        form.country = props.contact.country;
+        form.country_code = props.contact.country_code;
+    });
+
+    // Set country alpha code
+    const setCountryAlphaCode = (country) => {
+        form.country_code = countries.getAlpha2Code(country.target.value, 'en');
+    };
+</script>
+
 <template>
     <div class="container">
         <div class="row my-5">
@@ -124,57 +175,6 @@
         </div>
     </div>
 </template>
-
-<script setup>
-    import { Link } from '@inertiajs/vue3';
-    import { useForm } from '@inertiajs/vue3';
-    import countries from 'i18n-iso-countries';
-    import enLocale from 'i18n-iso-countries/langs/en.json';
-import { onMounted } from 'vue';
-    countries.registerLocale(enLocale);
-
-    // Data Object
-    const form = useForm({
-        id: '',
-        name: '',
-        email: '',
-        phone: '',
-        job_title: '',
-        company: '',
-        country: '',
-        country_code: ''
-    });
-
-    // Define props
-    const props = defineProps ({
-        contact: {
-            type: Object,
-            required: true
-        }
-    })
-
-    // New Contact function
-    const updateContact = () => {
-        form.post(route('contacts.update', form.id));
-    };
-
-    // Fill form once component is mounted
-    onMounted(() => {
-        form.id = props.contact.id;
-        form.name = props.contact.name;
-        form.email = props.contact.email;
-        form.phone = props.contact.phone;
-        form.job_title = props.contact.job_title;
-        form.company = props.contact.company;
-        form.country = props.contact.country;
-        form.country_code = props.contact.country_code;
-    });
-
-    // Set country alpha code
-    const setCountryAlphaCode = (country) => {
-        form.country_code = countries.getAlpha2Code(country.target.value, 'en');
-    };
-</script>
 
 <style scoped>
 </style>
